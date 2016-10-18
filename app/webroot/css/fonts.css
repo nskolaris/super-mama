@@ -1,0 +1,14 @@
+﻿/*FONTS*/
+ @font-face
+{
+font-family: "Lint McCree Intl BB";
+	src: url('../fonts/lmintlbb_r.otf');     
+font-family: "Lint McCree Intl BB-Bold";
+	src: url('../fonts/lmintlbb_b.otf');
+font-family: "Lint McCree Intl BB-Italic";
+	src: url('../fonts/lmintlbb_i.otf');
+font-family: "BadaBoom Pro BB";
+	src: url('../fonts/badaboomprobb_reg.otf');
+font-family: "BadaBoom Pro Italic";
+	src: url('../fonts/badaboomprobb_ital.otf');		
+} 

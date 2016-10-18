@@ -1,0 +1,204 @@
+<?php
+
+class FrontController extends AppController {
+
+	public $name = 'Front';
+
+	public $uses = array();
+
+public function beforeFilter()
+{
+	parent::beforeFilter();
+	$this->layout = 'default';
+}
+
+public function grabar_juego()
+{
+	$user = $this->facebook->getUser();
+	if (!$user) {
+		$this->redirect(array('controller'=>'front','action'=>'home'));
+		}	
+		
+	if(!empty($this->request->data)){
+			App::import('Model','Juego');
+			$this->Juego = new Juego();
+			$data = $this->request->data;
+			$data['Juego']['uid'] = $user;
+			if($this->Juego->save($data)){	
+				$juego = $this->Juego->find('first',array('conditions'=>array('Juego.uid'=>$user),'order'=>'Juego.id DESC')); 
+				echo $juego['Juego']['id'];
+			}
+		}
+		$this->autoRender = false;
+}
+
+public function finalizado()
+{}
+
+	public function home()
+	{
+			$data = $this->fbgetSignedRequest();
+		
+			if(!empty($data))
+				{
+					if (!isset($data["page"]["liked"]))
+					{
+						echo "<script> window.top.location.href='http://www.facebook.com/pages/Drublus-Factory/351127084993501?id=351127084993501&sk=app_211645485590601'</script>";
+					}
+						if (empty($data["page"]["liked"])) {
+		     $this->render('usuario_no_fan');
+		    }
+	    		else
+	    		{
+	     		$this->render('usuario_fan');
+	    		}
+				}
+				
+		$page = $subpage = $title_for_layout = null;
+
+		$title_for_layout = 'Home';
+		
+		$this->set(compact('page', 'subpage', 'title_for_layout'));
+
+	}
+
+	
+	public function datos(){
+	
+		$fbuser = $this->facebook->getUser();
+		$data = $this->facebook->getSignedRequest();
+		
+
+		if ($fbuser)
+		{	
+			if (!isset($data["page"]["liked"]))
+			{
+				echo "<script> window.top.location.href='http://www.facebook.com/BancoSupervielle/app_543875972314079'</script>";
+			}
+			$logoutUrl = $this->facebook->getLogoutUrl();
+		}
+		else 
+		{
+			$params = array('scope' => 'publish_actions,email','redirect_uri'=>'http://www.facebook.com/BancoSupervielle/app_543875972314079');
+  		echo "<script> window.top.location.href='".$this->facebook->getLoginUrl($params)."'</script>";
+		}
+		
+		App::import('Model','Usuario');
+		$this->Usuario = new Usuario();
+
+		if ($this->Usuario->find('first',array('conditions'=>array('Usuario.uid'=>$fbuser)))!=false)
+		{
+			$this->redirect('memotest');	
+		}
+		
+		$datos=$this->facebook->api("/me?fields=id,first_name,last_name,email,gender");
+			
+		if(!empty($this->request->data)){
+			$data=$this->request->data;
+			
+			$data['Usuario']['uid']=$fbuser;
+			$data['Usuario']['fb_nombre']=$datos['first_name'];
+			$data['Usuario']['fb_apellido']=$datos['last_name'];
+			if (isset($datos['email'])){$data['Usuario']['fb_mail']=$datos['email'];}
+			if (isset($datos['gender'])){$data['Usuario']['fb_sexo']=$datos['gender'];}
+
+			if($this->Usuario->save($data)){	
+				$this->render('memotest');
+			}
+			
+			if (!$this->Usuario->validates()) {
+				echo 'Debe llenar todos los campos';
+			}
+
+		}
+	
+
+		$page = $subpage = $title_for_layout = null;
+
+		$title_for_layout = 'Datos';
+		
+		$this->set(compact('page', 'subpage', 'title_for_layout'));
+		$this->set('provincias',array(
+		'Buenos Aires'=>'Buenos aires',
+		'Catamarca'=>'Catamarca',
+		'Chaco'=>'Chaco',
+		'Chubut'=>'Chubut',
+		'Córdoba'=>'Córdoba',
+		'Corrientes'=>'Corrientes',
+		'Entre Ríos'=>'Entre Ríos',
+		'Formosa'=>'Formosa',
+		'Jujuy'=>'Jujuy',
+		'La Pampa'=>'La Pampa',
+		'La Rioja'=>'La Rioja',
+		'Mendoza'=>'Mendoza',
+		'Misiones'=>'Misiones',
+		'Neuquén'=>'Neuquén',
+		'Río Negro'=>'Río Negro',
+		'Salta'=>'Salta',
+		'San Juan'=>'San Juan',
+		'San Luis'=>'San Luis',
+		'Santa Cruz'=>'Santa Cruz',
+		'Santa Fe'=>'Santa Fe',
+		'Santiago del Estero'=>'Santiago del Estero',
+		'Tierra del Fuego'=>'Tierra del Fuego',
+		'Tucumán'=>'Tucumán'
+		));
+		$this->set('datosfb',$datos);
+	
+	
+	}	
+	
+	public function memotest(){
+	
+		$user = $this->facebook->getUser();
+		
+		$fb_user = $this->Session->read('fb_user');
+
+		if (!isset($fb_user))
+		{
+			$ret_obj = $this->facebook->api('/me/feed', 'POST',
+			//Post 'estoy jugando memotest'
+			array(
+				'link' => 'http://www.facebook.com/BancoSupervielle/app_543875972314079',
+				'message' => '¡Estoy participando de la Promoción SuperCole por un e-book y órdenes de compra con Banco Supervielle!',
+			));
+			
+			$this->Session->write('fb_user',$user);
+		}
+		
+
+		if (!$user) {
+		$this->redirect(array('controller'=>'front','action'=>'home'));
+		}	
+
+	
+		$page = $subpage = $title_for_layout = null;
+		$title_for_layout = 'Memotest';
+		
+		$this->set(compact('page', 'subpage', 'title_for_layout'));
+	}	
+	
+	
+
+	public function resultado($game_id) {
+	
+		App::import('Model','Juego');
+		$this->Juego = new Juego();
+		$juego = $this->Juego->find('first',array('conditions'=>array('Juego.id'=>$game_id)));
+		
+		$ret_obj = $this->facebook->api('/me/feed', 'POST',
+		array(
+			'link' => 'http://www.facebook.com/BancoSupervielle/app_543875972314079',
+			'message' => '¡Acabo de completar el juego de la memoria de la Promoción SuperCole en '.$juego['Juego']['tiempo'].'! Jugá y ganá premios!'
+		));
+		
+		$page = $subpage = $title_for_layout = null;
+		$title_for_layout = 'Resultado';
+		$this->set(compact('page', 'subpage', 'title_for_layout'));
+		$this->set('juego',$juego);
+	}
+	
+
+
+}
+	

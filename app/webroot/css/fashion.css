@@ -1,0 +1,945 @@
+@charset "utf-8";
+* {
+	margin: 0px;
+	padding: 0px;
+}
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	margin-right: auto;
+	margin-left: auto;
+	.width: 758px;
+	.overflow: hidden;
+	
+}
+
+#contenedor {
+	width: 758px;
+	height: auto;
+	margin-right: auto;
+	margin-left: auto;
+}
+#header {
+	background-image: url(../img/backhead1.jpg);
+	height: 73px;
+	width: 758px;
+	margin-right: auto;
+	margin-left: auto;
+}
+#cuerpo {
+	height: 405px;
+	width: 758px;
+	background-color: #FFF;
+}
+#cuerpopreguntas {
+	height: 405px;
+	width: 758px;
+	background-color: #FFF;
+	background-image: url(../img/bgpreguntas.jpg);
+}
+
+#contenedor #continferior  {
+	height: 167px;
+	width: 758px;
+	padding-top: 35px;
+	padding-left: 35px;
+	background-image: url(../img/bgcontinferior.gif);
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 20px;
+	margin-left: 0px;
+	background-repeat: no-repeat;
+}
+#contenedor #contresultinferior {
+	height: 132px;
+	width: 715px;
+	padding-top: 35px;
+	padding-left: 43px;
+	background-image: url(../img/bgcontinferior.gif);
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 20px;
+	margin-left: 0px;
+}
+
+#contenedor #pie  {
+	font-size: 12px;
+	color: #666;
+	text-align: center;
+	margin-bottom: 15px;
+	margin-top: 10px;
+}
+#contenedor #pie a  {
+	color: #666;
+}
+
+
+
+
+#logo {
+	margin-top: 18px;
+	margin-left: 23px;
+	float: left;
+}
+
+#botones {
+	height: 29px;
+	width: 340px;
+	color: #333;
+	float: left;
+	margin-left: 150px;
+	margin-top: 20px;
+}
+#contenedor #header #botones .botonesmain {
+	margin-right: 6px;
+}
+
+#slider {
+	width: 474px;
+	float: left;
+	overflow: hidden;
+	height: 122px;
+}
+#tituloslider {
+	float: left;
+	height: 122px;
+	width: 219px;
+}
+
+
+#contenedor #cuerpo #instrucciones  {
+	background-image: url(../img/instrucciones.gif);
+	height: 28px;
+	width: 147px;
+	margin-left: 17px;
+	margin-top: 9px;
+	background-repeat: no-repeat;
+}
+#contenedor #premios {
+    background-image: url(../img/premiostitulo.png);
+    width: 219px;
+    height: 122px;
+}
+
+/* PORTADA ROJA*/
+
+#contenedor #cuerpo.rojo  {
+	background-image: url(../img/bgtorneorojo.jpg);
+	height: 128px;
+	.height: 405px;
+	width: 463px;
+	.width: 758px;
+	padding-top: 277px;
+	padding-left: 295px;
+}
+#contenedor #cuerpo.rojo .btn {
+	background-image: url(../img/playrojo.gif);
+	height: 37px;
+	width: 183px;
+	background-repeat: no-repeat;
+}
+/*--------------------------------*/
+
+/* PORTADA VERDE*/
+
+#contenedor #cuerpo.verde  {
+	background-image: url(../img/bgtorneoverde.jpg);
+	height: 128px;
+	.height: 405px;
+	width: 463px;
+	.width: 758px;
+	padding-top: 277px;
+	padding-left: 295px;
+}
+#contenedor #cuerpo.verde .btn {
+	background-image: url(../img/playverde.gif);
+	height: 37px;
+	width: 183px;
+}
+/*--------------------------------*/
+
+
+/* PORTADA AZUL*/
+
+#contenedor #cuerpo.azul  {
+	background-image: url(../img/bgtorneoazul.jpg);
+	height: 128px;
+	.height: 405px;
+	width: 463px;
+	.width: 758px;
+	padding-top: 277px;
+	padding-left: 295px;
+}
+#contenedor #cuerpo.azul .btn {
+	background-image: url(../img/playazul.gif);
+	height: 37px;
+	width: 183px;
+}
+/*--------------------------------*/
+
+
+/* PORTADA NEGRO*/
+
+#contenedor #cuerpo.negro  {
+	background-image: url(../img/bgtorneonegro.jpg);
+	height: 128px;
+	.height: 405px;
+	width: 463px;
+	.width: 758px;
+	padding-top: 277px;
+	padding-left: 295px;
+}
+#contenedor #cuerpo.negro .btn {
+	background-image: url(../img/playnegro.gif);
+	height: 37px;
+	width: 183px;
+}
+/*--------------------------------*/
+
+/* PORTADA ORO*/
+
+#contenedor #cuerpo.oro  {
+	background-image: url(../img/bgtorneooro.jpg);
+	height: 128px;
+	.height: 405px;
+	width: 463px;
+	.width: 758px;
+	padding-top: 277px;
+	padding-left: 295px;
+}
+#contenedor #cuerpo.oro .btn {
+	background-image: url(../img/playoro.gif);
+	height: 37px;
+	width: 183px;
+}
+/*--------------------------------*/
+
+/* CONTENEDOR INFERIOR */
+
+
+#texto h1 {
+	font-size: 22px;
+	margin-bottom: 4px;
+	color: #333;
+}
+#contenedor #cuerpopreguntas #contpregunta {
+	padding-top: 25px;
+	padding-left: 17px;
+}
+
+#contenedor #continferior #pista {
+	padding-top: 13px;
+	padding-left: 11px;
+}
+
+#texto p {
+	text-align: left;
+	color: #666;
+	line-height: 18px;
+	font-size: 14px;
+	font-weight: normal;
+}
+
+
+/*--------------------------------*/
+
+#contenedor #continferior #pista #texto {
+	float: left;
+	width: 525px;
+	margin-left: 20px;
+}
+#contenedor #continferior #pista #imagen {
+	float: left;
+	height: 95px;
+	width: 138px;
+}
+
+/* PREGUNTA */
+
+.cronometro {
+	height: 26px;
+	width: 115px;
+	float: left;
+	margin-left: 227px;
+	font-family: "Courier New", Courier, monospace;
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFF;
+	padding-top: 12px;
+	background-repeat: no-repeat;
+	padding-left: 108px;
+	margin-bottom: 15px;
+}
+.pregunta {
+	height: 118px;
+	width: 565px;
+	color: #333;
+	font-weight: bold;
+	font-family: "Arial Black", Gadget, sans-serif;
+	font-size: 16px;
+	text-align: center;
+	margin-left: 72px;
+	float: left;
+	margin-top: 20px;
+	
+}
+
+.pregunta h1 {
+	font-size: 32px;
+	height: 149px;
+	width: 556px;
+
+}
+
+.opciones {
+	height: 100px;
+	margin-left: 64px;
+	float: left;
+	width: 580px;
+	margin-top: 34px;
+}
+.opciones a {
+	text-decoration: none;
+	color: #000;
+}
+.opciones a:hover {
+	text-decoration: underline;
+}
+
+.opciones .opcionright {
+	margin-left: 76px;
+}
+
+
+/* --- HOVER ROJO ---*/
+
+#contenedor #cuerpopreguntas.rojo.bonus {
+	background-image: url(../img/bgbonus_rojo.jpg);
+}
+
+#contenedor #cuerpopreguntas.rojo .opcionleft {
+	background-image: url(../img/respleftbg.png);
+	background-repeat: no-repeat;
+	height: 40px;
+	width: 252px;
+	float: left;
+	margin-bottom: 13px;
+	font-weight: bold;
+}
+#contenedor #cuerpopreguntas.rojo .opcionleft-hover {
+	background-image: url(../img/hoverrojo1.png);
+}
+#contenedor #cuerpopreguntas.rojo .opcionright#b {
+	margin-left: 76px;
+}
+#contenedor #cuerpopreguntas.rojo .opcionright#d {
+	margin-left: 76px;
+}
+
+#contenedor #cuerpopreguntas.rojo .opcionright {
+	background-image: url(../img/resprightbg.png);
+	background-repeat: no-repeat;
+	float: left;
+	height: 40px;
+	width: 202px;
+	margin-bottom: 13px;
+	padding-left: 50px;
+	font-weight: bold;
+}
+#contenedor #cuerpopreguntas.rojo .opcionright-hover {
+	background-image: url(../img/hoverrojo2.png);
+}
+
+/*--------------------------------*/
+
+
+/* --- HOVER VERDE ---*/
+
+#contenedor #cuerpopreguntas.verde.bonus {
+	background-image: url(../img/bgbonus_verde.jpg);
+}
+
+#contenedor #cuerpopreguntas.verde .opcionleft {
+	background-image: url(../img/respleftbg.png);
+	background-repeat: no-repeat;
+	height: 40px;
+	width: 252px;
+	float: left;
+	margin-bottom: 13px;
+	font-weight: bold;
+}
+#contenedor #cuerpopreguntas.verde .opcionleft-hover {
+	background-image: url(../img/hoververde1.png);
+}
+#contenedor #cuerpopreguntas.verde .opcionright#b {
+	margin-left: 76px;
+}
+#contenedor #cuerpopreguntas.verde .opcionright#d {
+	margin-left: 76px;
+}
+
+#contenedor #cuerpopreguntas.verde .opcionright {
+	background-image: url(../img/resprightbg.png);
+	background-repeat: no-repeat;
+	float: left;
+	height: 40px;
+	width: 202px;
+	margin-bottom: 13px;
+	padding-left: 50px;
+	font-weight: bold;
+}
+#contenedor #cuerpopreguntas.verde .opcionright-hover {
+	background-image: url(../img/hoververde2.png);
+}
+
+/*--------------------------------*/
+
+
+/* --- HOVER AZUL ---*/
+
+
+#contenedor #cuerpopreguntas.azul.bonus {
+	background-image: url(../img/bgbonus_azul.jpg);
+}
+
+#contenedor #cuerpopreguntas.azul .opcionleft {
+	background-image: url(../img/respleftbg.png);
+	background-repeat: no-repeat;
+	height: 40px;
+	width: 252px;
+	float: left;
+	margin-bottom: 13px;
+	font-weight: bold;
+}
+#contenedor #cuerpopreguntas.azul .opcionleft-hover {
+	background-image: url(../img/hoverazul1.png);
+	background-repeat: no-repeat;
+	height: 40px;
+	width: 252px;
+	float: left;
+	margin-bottom: 13px;
+}
+#contenedor #cuerpopreguntas.azul .opcionright#b {
+	margin-left: 76px;
+}
+#contenedor #cuerpopreguntas.azul .opcionright#d {
+	margin-left: 76px;
+}
+
+#contenedor #cuerpopreguntas.azul .opcionright {
+	background-image: url(../img/resprightbg.png);
+	background-repeat: no-repeat;
+	float: left;
+	height: 40px;
+	width: 202px;
+	margin-bottom: 13px;
+	padding-left: 50px;
+	font-weight: bold;
+}
+#contenedor #cuerpopreguntas.azul .opcionright-hover {
+	background-image: url(../img/hoverazul2.png);
+}
+
+/*--------------------------------*/
+
+
+/* --- HOVER NEGRO ---*/
+
+
+#contenedor #cuerpopreguntas.negro.bonus {
+	background-image: url(../img/bgbonus_negro.jpg);
+}
+
+#contenedor #cuerpopreguntas.negro .opcionleft {
+	background-image: url(../img/respleftbg.png);
+	background-repeat: no-repeat;
+	height: 40px;
+	width: 252px;
+	float: left;
+	margin-bottom: 13px;
+	font-weight: bold;
+}
+#contenedor #cuerpopreguntas.negro .opcionleft-hover {
+	background-image: url(../img/hovernegro1.png);
+	background-repeat: no-repeat;
+	height: 40px;
+	width: 252px;
+	float: left;
+	margin-bottom: 13px;
+}
+#contenedor #cuerpopreguntas.negro .opcionright#b {
+	margin-left: 76px;
+}
+#contenedor #cuerpopreguntas.negro .opcionright#d {
+	margin-left: 76px;
+}
+
+#contenedor #cuerpopreguntas.negro .opcionright {
+	background-image: url(../img/resprightbg.png);
+	background-repeat: no-repeat;
+	float: left;
+	height: 40px;
+	width: 202px;
+	margin-bottom: 13px;
+	padding-left: 50px;
+	font-weight: bold;
+}
+#contenedor #cuerpopreguntas.negro .opcionright-hover {
+	background-image: url(../img/hovernegro2.png);
+}
+
+/*--------------------------------*/
+
+
+/* --- HOVER ORO ---*/
+
+
+#contenedor #cuerpopreguntas.oro.bonus {
+	background-image: url(../img/bgbonus_oro.jpg);
+}
+
+#contenedor #cuerpopreguntas.oro .opcionleft {
+	background-image: url(../img/respleftbg.png);
+	background-repeat: no-repeat;
+	height: 40px;
+	width: 252px;
+	float: left;
+	margin-bottom: 13px;
+	font-weight: bold;
+}
+#contenedor #cuerpopreguntas.oro .opcionleft-hover {
+	background-image: url(../img/hoveroro1.png);
+	background-repeat: no-repeat;
+	height: 40px;
+	width: 252px;
+	float: left;
+	margin-bottom: 13px;
+}
+#contenedor #cuerpopreguntas.oro .opcionright#b {
+	margin-left: 76px;
+}
+#contenedor #cuerpopreguntas.oro .opcionright#d {
+	margin-left: 76px;
+}
+
+#contenedor #cuerpopreguntas.oro .opcionright {
+	background-image: url(../img/resprightbg.png);
+	background-repeat: no-repeat;
+	float: left;
+	height: 40px;
+	width: 202px;
+	margin-bottom: 13px;
+	padding-left: 50px;
+	font-weight: bold;
+}
+#contenedor #cuerpopreguntas.oro .opcionright-hover {
+	background-image: url(../img/hoveroro2.png);
+}
+
+/*--------------------------------*/
+#contenedor #cuerpopreguntas.rojo .opcionleft-incorrecto,
+#contenedor #cuerpopreguntas.verde .opcionleft-incorrecto,
+#contenedor #cuerpopreguntas.azul .opcionleft-incorrecto,
+#contenedor #cuerpopreguntas.negro .opcionleft-incorrecto,
+#contenedor #cuerpopreguntas.oro .opcionleft-incorrecto,
+#contenedor #cuerpopreguntas .opcionleft-incorrecto,
+#contenedor #cuerpopreguntas .opcionleft-incorrecto:hover {
+	background-image: url(../img/respleftbg_incorrecto.png);
+}
+
+#contenedor #cuerpopreguntas.rojo .opcionleft-correcto,
+#contenedor #cuerpopreguntas.verde .opcionleft-correcto,
+#contenedor #cuerpopreguntas.azul .opcionleft-correcto,
+#contenedor #cuerpopreguntas.negro .opcionleft-correcto,
+#contenedor #cuerpopreguntas.oro .opcionleft-correcto,
+#contenedor #cuerpopreguntas .opcionleft-correcto,
+#contenedor #cuerpopreguntas .opcionleft-correcto:hover {
+	background-image: url(../img/respleftbg_correcto.png);
+}
+
+#contenedor #cuerpopreguntas.rojo .opcionright-incorrecto,
+#contenedor #cuerpopreguntas.verde .opcionright-incorrecto,
+#contenedor #cuerpopreguntas.azul .opcionright-incorrecto,
+#contenedor #cuerpopreguntas.negro .opcionright-incorrecto,
+#contenedor #cuerpopreguntas.oro .opcionright-incorrecto,
+#contenedor #cuerpopreguntas .opcionright-incorrecto,
+#contenedor #cuerpopreguntas .opcionright-incorrecto:hover {
+	background-image: url(../img/resprightbg_incorrecto.png);
+}
+
+#contenedor #cuerpopreguntas.rojo .opcionright-correcto,
+#contenedor #cuerpopreguntas.verde .opcionright-correcto,
+#contenedor #cuerpopreguntas.azul .opcionright-correcto,
+#contenedor #cuerpopreguntas.negro .opcionright-correcto,
+#contenedor #cuerpopreguntas.oro .opcionright-correcto,
+#contenedor #cuerpopreguntas .opcionright-correcto,
+#contenedor #cuerpopreguntas .opcionright-correcto:hover {
+	background-image: url(../img/resprightbg_correcto.png);
+}
+
+	
+#contenedor #cuerpo #resultado {
+	 
+	height: 233px;
+	width: 383px;
+	padding-top: 172px;
+	padding-left: 375px;
+	font-size: 42px;
+	color: #FFF;
+	font-weight: bold;
+}
+
+.resultoro {
+	background-image:url(../img/bgresultado_oro.jpg);
+}
+
+.resultplata {
+	background-image:url(../img/bgresultado_plata.jpg);
+}
+
+.resultbronce {
+	background-image:url(../img/bgresultado_bronce.jpg);
+}
+
+.btncompartilo {
+	float: left;
+	margin-right: 10px;
+}
+#contenedor #cuerpo #resultado #botonesresultado {
+	margin-top: 65px;
+}
+#contenedor #cuerpo #puntytorneos {
+	background-image: url(../img/bgpuntytorneos.jpg);
+	height: 376px;
+	width: 729px;
+	padding-top: 29px;
+	padding-left: 29px;
+}
+#contenedor #cuerpo #puntytorneos #titulo {
+	color: #FFF;
+	font-size: 24px;
+	font-weight: bold;
+}
+#contenedor #cuerpo #puntytorneos #tiras .jugado {
+	background-image: url(../img/bgtiratorneo.png);
+	height: 50px;
+	width: 708px;
+	margin-bottom: 7px;
+}
+#contenedor #cuerpo #puntytorneos #tiras .puntosxtorneo {
+	float: left;
+	width: 150px;
+	margin-left: 40px;
+	margin-top: 10px;
+	font-size: 24px;
+	font-weight: bold;
+	color: #333;
+}
+#contenedor #cuerpo #puntytorneos #tiras .puntosxbonus {
+	float: left;
+	width: 120px;
+	margin-left: 20px;
+	margin-top: 10px;
+	font-size: 24px;
+	font-weight: bold;
+	color: #333;
+}
+#contenedor #cuerpo #puntytorneos #tiras .puntosxtotal {
+	float: left;
+	width: 120px;
+	margin-left: 20px;
+	margin-top: 10px;
+	font-size: 24px;
+	font-weight: bold;
+	color: #000;
+}
+
+
+
+#contenedor #cuerpo #puntytorneos #tiras .estado1  {
+	float: right;
+	height: 50px;
+	width: 125px;
+}
+#contenedor #cuerpo #puntytorneos #tiras .estado1punt {
+	float: right;
+	height: 50px;
+	width: 50px;
+	overflow: hidden;
+	background-position: right top;
+	background-repeat: no-repeat;
+	background-image: url(../img/accion_jugado.png);
+}
+
+#contenedor #cuerpo #puntytorneos #tiras {
+	margin-top: 6px;
+}
+
+
+#contenedor #cuerpo #puntytorneos #tiras .tit  {
+	height: 30px;
+	width: 144px;
+	padding-top: 20px;
+	padding-left: 11px;
+	float: left;
+}
+#contenedor #cuerpo #puntytorneos #tiras .nodisponible {
+	background-image: url(../img/bgtiratorneo_nodisp.png);
+	height: 50px;
+	width: 708px;
+}
+
+#contenedor #cuerpo #puntytorneos #tiras .disponible {
+	background-image: url(../img/bgtiratorneo.png);
+	height: 50px;
+	width: 708px;
+	margin-bottom: 7px;
+}
+
+/* -------------  CONTENEDOR INFERIOR EN PU TAJES -----------*/
+
+#puntajeenpie {
+	background-image: url(../img/fondodepuntaje.jpg);
+	height: 109px;
+	width: 675px;
+	margin-top: 6px;
+}
+#contenedor #cuerpo #puntytorneos #tiras .leyenda  {
+	width: 66px;
+	float: left;
+	font-size: 10px;
+	font-weight: bold;
+	line-height: 10px;
+	color: #000;
+	vertical-align: bottom;
+	height: 30px;
+}
+#contenedor #cuerpo #puntytorneos #tiras .leyendabonus {
+	width: 40px;
+	float: left;
+	font-size: 10px;
+	font-weight: bold;
+	line-height: 10px;
+	color: #000;
+	vertical-align: bottom;
+	margin-top: 5px;
+}
+#contenedor #cuerpo #puntytorneos #tiras .leyendatotal {
+	width: 40px;
+	float: left;
+	font-size: 12px;
+	font-weight: bold;
+	line-height: 10px;
+	color: #000;
+	vertical-align: bottom;
+	margin-top: 10px;
+	margin-right: 10px;
+}
+
+
+
+
+#tablita {
+	text-align: center;
+	font-size: 24px;
+}
+#contenedor #cuerpo #enviando {
+	background-image: url(../img/bg_enviando.jpg);
+	height: 265px;
+	width: 758px;
+	padding-top: 140px;
+	text-align: center;
+}
+#contenedor #cuerpo #amigosfans #amigosqueinvitaste #bodyamigos #btncomparitiramigosfans {
+	height: 37px;
+	width: 149px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 10px;
+	margin-bottom: 8px;
+}
+
+#contenedor #cuerpo #error1 {
+	background-image: url(../img/bg_404.jpg);
+	height: 120px;
+	width: 445px;
+	padding-top: 285px;
+	padding-left: 313px;
+}
+/*----------- A Quien Suma ------*/
+
+#cuerpo #aquiensuma #contenedoramigos {
+	height: 188px;
+	width: 642px;
+	border: 1 solid #000;
+	overflow: auto;
+}
+.bgamigo {
+	background-image: url(../img/fondoamigo.png);
+	height: 56px;
+	width: 183px;
+	float: left;
+	padding-top: 6px;
+	padding-left: 6px;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+.bgamigo .foto {
+	float: left;
+	height: 50px;
+	width: 50px;
+}
+.bgamigo .nombre {
+	float: left;
+	height: 50px;
+	width: 70px;
+	margin-left: 10px;
+	color: #333;
+	font-weight: bold;
+}
+.bgamigo .boton {
+	float: left;
+	height: 32px;
+	width: 33px;
+	margin-top: 10px;
+	margin-left: 10px;
+}
+
+/*----- FIN DE A QUIEN SUMA ------*/#contenedor #cuerpo #aquiensuma {
+	background-image: url(../img/bg_aquiensuma.jpg);
+	height: 280px;
+	width: 723px;
+	padding-top: 125px;
+	padding-left: 35px;
+}
+
+
+/* ---- AMIGOS FANS ---- */
+
+#amigosqueinvitaste {
+}
+#tituloamigos {
+	background-image: url(../img/titamigos.png);
+	background-repeat: no-repeat;
+	height: 38px;
+	width: 712px;
+	float: left;
+}
+#bodyamigos {
+	background-image: url(../img/bodamigos.png);
+	background-repeat: repeat-y;
+	height: 245px;
+	padding-left: 25px;
+	padding-top: 12px;
+	padding-bottom: 23px;
+	float: left;
+	width: 687px;
+}
+#amigosfans {
+	background-image: url(../img/bg_amigosfans.jpg);
+	height: 377px;
+	width: 734px;
+	padding-top: 28px;
+	padding-left: 24px;
+}
+
+#bodyamigos h1 {
+	font-size: 13px;
+	font-weight: bold;
+	color: #666;
+	margin-bottom: 14px;
+}
+#bodyamigos h1 a {
+	font-size: 13px;
+	font-weight: normal;
+	color: #666;
+	margin-right: 4px;
+	margin-left: 4px;
+}
+#bodyamigos h1 a:hover {
+	font-size: 13px;
+	font-weight: normal;
+	color: #000;
+	margin-right: 4px;
+	margin-left: 4px;
+}
+
+
+.pibe {
+	float: left;
+	width: 50px;
+	height: 76px;
+	margin-right: 10px;
+	margin-left: 10px;
+	margin-bottom: 16px;
+}
+#scroll, .scroll {
+	overflow: auto;
+	height: 180px;
+	width: 660px;
+}
+
+.pibe #img {
+	height: 50px;
+	width: 50px;
+	background-color: #000;
+	float: left;
+}
+.pibe #nombre {
+	float: left;
+	width: 50px;
+	font-size: 10px;
+	text-align: center;
+	font-weight: bolder;
+	margin-top: 2px;
+}
+#footeramigos {
+	background-image: url(../img/footamigos.png);
+	height: 10px;
+	background-repeat: no-repeat;
+	float: left;
+	width: 712px;
+}
+
+/* ----- FIN AMIGOS FANS ---*/
+#contenedor #cuerpo #sumapuntos {
+	background-image: url(../img/bg_amigosfans.jpg);
+	height: 302px;
+	width: 758px;
+	text-align: center;
+	padding-top: 103px;
+}
+#contenedor #cuerpo #sumapuntos #btncompartiloyadesuma {
+	margin-top: 27px;
+}
+#contenedor #cuerpo #formulario {
+	background-image: url(../img/bg_formulario.jpg);
+	height: 280px;
+	width: 476px;
+	padding-top: 125px;
+	padding-left: 282px;
+}
+#contenedor #cuerpo #formulario form .fondinput {
+	background-image: url(../img/input.gif);
+	height: 29px;
+	width: 251px;
+	margin-bottom: 7px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	padding-left: 8px;
+}
+#contenedor #cuerpo #formulario form .input_error {
+	border: 2px solid #F00;
+}
+
+#contenedor #cuerpo #formulario form {
+	width: 252px;
+}
+#contenedor #cuerpo #formulario form p .sexoerror {
+	border: 2px solid #F00;
+}
+
+#contenedor #cuerpo #formulario form p img {
+	float: right;
+}

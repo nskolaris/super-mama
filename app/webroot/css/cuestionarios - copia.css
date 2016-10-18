@@ -1,0 +1,162 @@
+#header {
+	background-image: url(../img/backheadpreg.jpg);
+}
+	#contenedor.bonus #header {
+		background-image: url(../img/backhead5.jpg);
+	}
+	#contenedor.enviando #header {
+		background-image: url(../img/backheadenviando.gif);
+	}
+
+#portada {
+	background-image: url(../img/portadapreg.jpg);
+	height: 342px;
+	background-position: center;
+	background-repeat: no-repeat;
+	padding-top: 12px;
+	padding-left: 18px;
+}
+	#contenedor.bonus #portada {
+		background-image: url(../img/portada5.jpg);
+	}
+	#contenedor.enviando #portada {
+		background-image: url(../img/portadaenviando.gif);
+	}
+	
+#barra {
+	background-image: url(../img/barramarcadorespreg.jpg);
+}
+	#contenedor.bonus #barra {
+		background-image: url(../img/barramarcadores5.jpg);
+	}
+	#contenedor.enviando #barra {
+		background-image: url(../img/barraenviando.gif);
+	}
+
+.quest {
+	height: 360px;
+	clear: both;
+}
+
+.numpregunta {
+	background-image: url(../img/numpregbg.gif);
+	float: left;
+	height: 45px;
+	width: 56px;
+	font-size: 30px;
+	color: #FFF;
+	font-weight: bold;
+	text-align: center;
+	padding-top: 7px;
+	font-family: Verdana, Geneva, sans-serif;
+}
+	#contenedor.bonus .numpregunta {
+		display: none;
+	}
+	
+.cronometro {
+	background-image: url(../img/trivia-3-light-mas_09.gif);
+	height: 26px;
+	width: 110px;
+	float: left;
+	margin-left: 227px;
+	font-family: "Courier New", Courier, monospace;
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFF;
+	padding-top: 26px;
+	background-repeat: no-repeat;
+	padding-left: 64px;
+	margin-bottom: 15px;
+}
+	.cronometro.warning {
+		color: #F00;
+	}
+
+.pregunta {
+	height: 149px;
+	width: 660px;
+	color: #FFF;
+	font-weight: bold;
+	font-family: "Arial Black", Gadget, sans-serif;
+	font-size: 30px;
+	text-align: center;
+	margin-right: auto;
+	margin-left: auto;
+	clear: left;
+}
+	#contenedor.bonus .pregunta {
+		color: #F00;
+	}
+
+.respuestas {
+	background-image: url(../img/bgopciones.png);
+	height: 26px;
+	width: 300px;
+	background-repeat: no-repeat;
+	padding-left: 20px;
+	float: left;
+	margin-bottom: 20px;
+	margin-right: 38px;
+	padding-top: 4px;
+	font-weight: bold;
+	font-size: 13px;
+}
+.respuestas:hover {
+	background-image: url(../img/bgopcioneshover.png);
+	height: 26px;
+	width: 300px;
+	background-repeat: no-repeat;
+	padding-left: 20px;
+	float: left;
+	margin-bottom: 20px;
+	margin-right: 38px;
+	padding-top: 4px;
+	font-weight: bold;
+	font-size: 13px;
+}
+
+.opciones {
+	clear: left;
+	height: auto;
+	width: auto;
+	float: none;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#enviando {
+	height: 149px;
+	text-align: center;
+	clear: left;
+	padding-top: 115px;
+	padding-left: 206px;
+}
+
+
+.pista {
+	display: none;
+	height: 124px;
+	width: 690px;
+	margin-right: auto;
+	margin-left: auto;
+	background-image: url(../img/fondopista.gif);
+	padding-top: 23px;
+	padding-left: 28px;
+}
+
+	.pista h1 {
+		font-size: 22px;
+		margin-bottom: 4px;
+		color: #333;
+	}
+	
+	.pista p {
+		width: 658px;
+		text-align: left;
+		color: #666;
+		line-height: 18px;
+		font-size: 14px;
+		font-weight: normal;
+	}
+

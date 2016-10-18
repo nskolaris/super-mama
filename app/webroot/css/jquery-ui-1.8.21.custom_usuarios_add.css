@@ -1,0 +1,67 @@
+.ui-dialog{
+	background:#373737!important;
+	border:6px solid #c6c6c6!important;
+	color:#c6c6c6!important;
+	font-family:"Arial"!important;
+	font-weight:normal!important;
+}
+
+.ui-corner-all{
+	border-radius:0px!important;
+	-moz-border-radius:0px!important;
+	-webkit-border-radius:0px!important;
+	
+}
+
+.ui-dialog-titlebar{
+	background:none!important;
+	border:none!important;
+	color:#c6c6c6!important;
+	font-size:21px!important;
+	font-weight:normal!important;
+	position:relative!important;
+}
+
+.ui-dialog-title{
+}
+
+.ui-dialog-titlebar-close.ui-state-hover{
+	background:none!important;
+	border:none!important;
+}
+
+.ui-dialog-titlebar-close .ui-icon-closethick{
+	background:url(../img/close_dialog.png);
+	background-repeat:no-repeat!important;	
+	width:46px!important;
+	height:45px!important;
+	position:absolute!important;
+	top:-5px!important;
+	right:0px!important;
+	
+}
+
+.ui-dialog-content{
+	padding:0px 40px 20px 40px!important;
+	color:#c6c6c6!important;
+	font-weight:normal!important;
+}
+
+.ui-dialog-content h3{
+	font-size:21px!important;
+	font-weight:normal!important;
+	margin-bottom:20px;
+}
+
+.ui-dialog-content p{
+	font-size:12px!important;
+	line-height:1.5!important;
+	margin-bottom:20px!important;
+}
+
+.ui-dialog-content li{
+	font-size:12px!important;
+	line-height:1.5!important;
+	margin-bottom:5px!important;
+}
+

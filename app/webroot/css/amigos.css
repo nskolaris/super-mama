@@ -1,0 +1,110 @@
+#header {
+	background-image: url(../img/backhead3.jpg);
+}
+
+#portada {
+	background-image: url(../img/portada3.jpg);
+	height: 335px;
+	background-position: center;
+	background-repeat: no-repeat;
+	padding-top: 18px;
+	padding-left: 25px;
+}
+#barra {
+	background-image: url(../img/barramarcadores3.jpg);
+}
+
+#tituloamigos {
+	background-image: url(../img/titamigos.png);
+	background-repeat: no-repeat;
+	height: 38px;
+	width: 712px;
+	float: left;
+}
+#bodyamigos {
+	background-image: url(../img/bodamigos.png);
+	background-repeat: repeat-y;
+	height: auto;
+	padding-left: 25px;
+	padding-top: 12px;
+	padding-bottom: 23px;
+	float: left;
+	width: 712px;
+}
+#bodyamigos p {
+	color: #000000;
+    font-size: 13px;
+    margin-bottom: 14px;
+}
+#bodyamigos h1 {
+	font-size: 13px;
+	font-weight: bold;
+	color: #666;
+	margin-bottom: 14px;
+}
+#bodyamigos h1 a {
+	font-size: 13px;
+	font-weight: normal;
+	color: #666;
+	margin-right: 4px;
+	margin-left: 4px;
+}
+#bodyamigos h1 a:hover {
+	font-size: 13px;
+	font-weight: normal;
+	color: #000;
+	margin-right: 4px;
+	margin-left: 4px;
+}
+
+#msg_invitados {
+	font-weight: normal;
+	color: #666;
+	font-size: 11px;
+}
+
+
+.pibe {
+	float: left;
+	width: 50px;
+	height: 76px;
+	margin-right: 10px;
+	margin-left: 10px;
+	margin-bottom: 16px;
+}
+.scroll {
+	overflow: auto;
+	height: 180px;
+	width: 660px;
+}
+
+.pibe .foto {
+	height: 50px;
+	width: 50px;
+	background-color: #000;
+	float: left;
+}
+.pibe .nombre {
+	float: left;
+	width: 30px;
+	font-size: 10px;
+	text-align: center;
+	font-weight: bolder;
+	margin-top: 2px;
+}
+.pibe .check {
+	float: left;
+}
+#footeramigos {
+	background-image: url(../img/footamigos.png);
+	height: 10px;
+	background-repeat: no-repeat;
+	float: left;
+	width: 712px;
+}
+#btnenviar {
+    height: 26px;
+    margin-left: 565px;
+    margin-top: 10px;
+    width: 57px;
+}

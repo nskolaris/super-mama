@@ -1,0 +1,442 @@
+<?php
+class FotosController extends AppController {
+
+	var $name = 'Fotos';
+	var $uses = array('Foto');
+	var $components = array('Email'); 
+
+	// puede recibir un foto por parametro (named)
+	function gallery(){
+	
+		$ranking = isset ($this->params['form']['ranking']) ? intval($this->params['form']['ranking']) : 
+					(isset($this->params['named']['ranking']) ? intval($this->params['named']['ranking']) : 0);
+
+		if (isset($this->params['named']['foto'])) {
+			$this->set('idfoto', $this->params['named']['foto']);
+		}
+	
+		$this->set('fbusr', $this->fbGetVisitorProfile());
+		$this->set('param_ranking', $ranking);
+		
+	}
+	
+	function galleryAmigos(){
+		$ranking = isset ($this->params['form']['ranking']) ? intval($this->params['form']['ranking']) : 
+					(isset($this->params['named']['ranking']) ? intval($this->params['named']['ranking']) : 0);
+
+		if (isset($this->params['named']['foto'])) {
+			$this->set('idfoto', $this->params['named']['foto']);
+		}
+	
+		$this->checkLogin();
+		
+		$facebook = $this->fbConnect();
+		$usr = $this->getUsuario();
+		
+		if ($usr)
+		{
+			$friends = $facebook->api('/me/friends');
+			$friend_ids = array();
+			foreach($friends['data'] as $friend)
+			{
+				$nfotos = $this->Foto->find('count',array('conditions'=>array('Usuario.fb_id'=>$friend['id'])));
+				if ($nfotos>0){array_push($friend_ids,$friend['id']);}
+			}
+			$friends_encoded = json_encode($friend_ids);
+			$this->set('friends',$friends_encoded);	
+		}
+		$this->set('fbusr', $usr);
+		$this->set('param_ranking', $ranking);
+		}
+	
+	/*
+	 * Recibe por POST o NAMED
+	 *
+	 * @param	int limit	opcional
+	 * @param	int page	opcional
+	 * @param	int offset	opcional, trae las fotos con id menor a $offset
+	 * @param	int ranking opcional, si es 1 entonces muestra todo ordenado por ranking
+	 */
+	function gallery_page() {
+		$page = isset ($this->params['form']['page']) ? intval($this->params['form']['page']) : 
+					(isset($this->params['named']['page']) ? intval($this->params['named']['page']) : 1);
+		$limit = isset ($this->params['form']['limit']) ? intval($this->params['form']['limit']) : 
+					(isset($this->params['named']['limit']) ? intval($this->params['named']['limit']) : 12);
+		$offset = isset ($this->params['form']['offset']) ? intval($this->params['form']['offset']) : 
+					(isset($this->params['named']['offset']) ? intval($this->params['named']['offset']) : 0);
+		$ranking = isset ($this->params['form']['ranking']) ? intval($this->params['form']['ranking']) : 
+					(isset($this->params['named']['ranking']) ? intval($this->params['named']['ranking']) : 0);
+
+		//var_dump(json_decode($this->params['form']['friends']));
+		
+		if (isset($this->params['form']['friends']))
+		{
+			$friendos = json_decode($this->params['form']['friends']);
+			$condiciones = array(
+			'Foto.deleted' => null,
+			/*'Usuario.fb_id' => $friendos,*/
+			);
+		}else{
+			
+			$condiciones = array(
+			'Foto.deleted' => null,
+			'Usuario.id !=' => null,
+			);
+}
+			
+		
+		
+		if ($offset > 0) {
+			$condiciones['Foto.id <'] = $offset;
+			$page = 1;
+		}
+		
+		
+
+		$this->paginate['contain'] = array(
+			'Usuario' => array(
+				'fields' => array('nombre_completo')
+			),
+		);
+		$this->paginate['conditions'] = $condiciones;
+		$this->paginate['order'] = $ranking > 0 ? 'Foto.voto_count DESC, Foto.id DESC' : 'Foto.id DESC';
+		$this->paginate['page'] = $page;
+		$this->paginate['limit'] = $limit;
+		
+		$this->set('Fotos',$this->paginate());
+							
+	}
+
+	// deprecar?
+	function traerFotos(){
+		$this->render('view');
+	}
+	
+	function view($id = null){
+	
+		// este puede ser ajax o no
+		if (is_null($id)) {
+			$this->Session->setFlash('Debe especificar una foto.');
+			$this->redirect('/usuarios/');
+		}
+		
+		$Foto = $this->Foto->get($id);
+		if (empty($Foto)) {
+		
+			// NOTE tuvimos que borrar algunas duplicadas (aparentemente andaba mal el script)
+			// asique en este caso vamos a buscar la primera foto de ese usuario
+			$Foto = $this->Foto->getUnaValida($id);
+			if (empty($Foto)) {
+				$this->Session->setFlash('La foto no existe o ya fue borrada.');
+				$this->redirect('/usuarios/');
+			}
+		}
+		
+		$Fotos = $this->Foto->getByUsuario($Foto['Foto']['usuario_id']);
+		
+		$this->set('Fotos', $Fotos);
+		$this->set('Foto', $Foto);
+		$this->set('usr', $Foto['Usuario']);
+		$this->set('fbusr', $this->fbGetVisitorProfile());
+		
+		// TODO aca tengo que detectar si es ajax o no
+		
+	}
+	
+	
+	// es igual a view, pero tiene cosas para ver lo de la votacion
+	function view_con_votacion($id = null){
+	
+		// este puede ser ajax o no
+		if (is_null($id)) {
+			$this->Session->setFlash('Debe especificar una foto.');
+			$this->redirect('/usuarios/');
+		}
+		
+		$Foto = $this->Foto->get($id);
+		if (empty($Foto)) {
+		
+			// NOTE tuvimos que borrar algunas duplicadas (aparentemente andaba mal el script)
+			// asique en este caso vamos a buscar la primera foto de ese usuario
+			$Foto = $this->Foto->getUnaValida($id);
+			if (empty($Foto)) {
+				$this->Session->setFlash('La foto no existe o ya fue borrada.');
+				$this->redirect('/usuarios/');
+			}
+		}
+		
+		$Fotos = $this->Foto->getByUsuario($Foto['Foto']['usuario_id']);
+		
+		$this->set('Fotos', $Fotos);
+		$this->set('Foto', $Foto);
+		$this->set('usr', $Foto['Usuario']);
+		$this->set('fbusr', $this->fbGetVisitorProfile());
+		
+		// TODO aca tengo que detectar si es ajax o no
+		
+	}
+	
+	
+
+	function download($id = null) {
+	
+		$this->layout = null;
+		$this->autoRender = false;
+		
+		if (is_null($id)) {
+			$this->Session->setFlash('Debe especificar una foto.');
+			$this->redirect('/usuarios/');
+		}
+		
+		$Foto = $this->Foto->get($id);
+		if (empty($Foto)) {
+			$this->Session->setFlash('La foto no existe o ya fue borrada.');
+			$this->redirect('/usuarios/');
+		}
+		
+		$fl = PATH_COMMON . '/img/fotos/' . $Foto['Foto']['filename'];
+		header('Content-Description: File Transfer');
+		header('Content-Disposition: attachment; filename=Supermama.jpg');
+		header('Content-Transfer-Encoding: binary');
+		header('Expires: 0');
+		header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+		header('Pragma: public');
+		header('Content-Length: ' . filesize($fl));
+		ob_clean();
+		flush();
+		readfile($fl);
+		exit;
+		
+	}
+
+	
+	function upload() {
+		// permite elegir el metodo de upload de la foto
+		$this->checkLogin();
+	}
+
+	// puede recibir por GET photoUrl
+	function add() {
+	
+		$this->checkLogin();
+		
+		// muestra el flash
+		if (isset($this->params['url']['photoUrl'])) {
+			$this->set('photoUrl', $this->params['url']['photoUrl']);
+		}
+		
+		
+	}
+
+	// aca recibe el post con la imagen generada
+	function save() {
+
+		$this->checkLogin();
+
+		// DEBUG
+		if ($this->params['url']['c'] == 'error') {
+			// esto es como para probar
+			header("HTTP/1.0 404 Not Found");
+			exit();
+		} 
+		
+		$this->layout = null;
+		$this->autoRender = false;
+		
+		if (empty($GLOBALS[ 'HTTP_RAW_POST_DATA' ] )) {
+			// no tiene archivo
+			header("HTTP/1.0 404 Not Found");
+			exit();
+		}
+		
+		$usr = $this->getUsuario();
+		if (empty($usr)) {
+			// no puedo acceder al usuario
+			header("HTTP/1.0 404 Not Found");
+			exit();
+		}
+		
+
+		// DEBUG
+		/*
+		$fp = fopen( PATH_COMMON . '/img/var_dump.txt', 'wb' );
+		fwrite( $fp, var_export($_REQUEST,true) );
+		fclose( $fp );
+		*/
+
+		$filename = str_replace(".", "", uniqid());
+		settype($filename, "string");
+		$filename .= ".jpg";
+		
+		$photofile = PATH_COMMON . '/img/fotos/' . $filename;
+		$fp = fopen( $photofile, 'wb' );
+		$res = fwrite( $fp, $GLOBALS[ 'HTTP_RAW_POST_DATA' ] );
+		fclose( $fp );
+			
+		if (!$res) {
+			// no pudo escribir la imagen
+			header("HTTP/1.0 404 Not Found");
+			exit();
+		}
+		
+		// creamos el registro en la DB
+		$Datos = array(
+			'usuario_id' => $usr['id'],
+			'filename' => $filename,
+		);
+		$Datos['orden'] = $this->Foto->getNextOrden($Datos);
+		$Datos['comentario'] = $this->params['url']['c'];
+		
+		// este es un caso especial, por algun motivo se estan duplicando las fotos
+		if (!$this->Foto->validateAdd($Datos)) {
+			ob_clean();
+			echo HOST . URL_ROOT . '/usuarios/index';
+			exit();
+		}
+
+		if (!$this->Foto->save($Datos)) {
+			header("HTTP/1.0 404 Not Found");
+			exit();
+		}
+		
+		$facebook = $this->fbConnect();
+		$Datos['id'] = $this->Foto->id;
+	
+		if (!($fb_photoid = $this->FacebookM->crearFoto($facebook,$Datos))) {
+//			$this->Session->setFlash('crearFoto');
+			header("HTTP/1.0 404 Not Found");
+			exit();
+		}
+		
+//		$this->Session->setFlash(var_export($fb_photoid['id'],true));
+
+		// Guardamos el idfoto de facebook
+		// el id ya lo tenemos asignado
+		$this->Foto->saveField('fb_photoid', $fb_photoid['id']);
+
+		// publicamos el mensaje en el muro
+		$this->FacebookM->publicarFoto($facebook,$Datos);
+		
+		ob_clean();
+		echo HOST . URL_ROOT . '/usuarios/index';
+		exit();
+		
+	}
+	
+	function albums(){
+	
+		$this->checkLogin();
+		
+		$facebook = $this->fbConnect();
+		try {
+			$albums = $facebook->api(
+				'/me/albums', array(
+					'fields'=>'id,name,cover_photo,count'
+				));
+		} catch (Exception $e) {
+			//debug($e);
+		}
+		$this->set('albums', $albums);
+		$this->set('access_token', $facebook->getAccessToken());
+	}
+	
+	function getAlbum($idalbum) {
+	
+		$this->checkLogin();
+
+		$this->layout = null;
+	
+		$facebook = $this->fbConnect();
+		try {
+			$fotos = $facebook->api(
+				"/$idalbum/photos", array(
+					'fields'=>'id,images'
+				));
+		} catch (Exception $e) {
+			//debug($e);
+		}
+		$this->set('fotos', $fotos['data']);
+	}
+	
+	function delete($id = null) {
+	
+		$this->checkLogin();
+
+		if (is_null($id)) {
+			$this->Session->setFlash('Debe especificar una foto.');
+			$this->redirect('/usuarios/');
+		}
+		
+		$Foto = $this->Foto->get($id);
+		if (empty($Foto)) {
+			$this->Session->setFlash('La foto no existe o ya fue borrada.');
+			$this->redirect('/usuarios/');
+		}
+		
+		if (!($usr = $this->getUsuario())) {
+			$this->Session->setFlash('Intente nuevamente.');
+			$this->redirect('/usuarios/');
+		}
+
+		if ($usr['id'] != $Foto['Foto']['usuario_id']) {
+			$this->Session->setFlash('No puede borrar esa foto.');
+			$this->redirect('/usuarios/');
+		}
+		
+		if ($this->Foto->borrar($id)) {
+			$this->Session->setFlash('Se ha borrado la foto.');
+		} else {
+			$this->Session->setFlash('No se ha podido borrar la foto.');
+		}
+		
+		$this->redirect('/usuarios/');
+		
+	}
+	
+	function enviar(){
+
+		$id = $this->data['Foto']['id'];
+		$email = $this->data['Foto']['email'];
+		
+		if (is_null($id)) {
+			$this->Session->setFlash('Debe especificar una foto.');
+			$this->redirect('/usuarios/');
+		}
+		
+		if (is_null($email)) {
+			$this->Session->setFlash('Debe especificar un email.');
+			$this->redirect('/usuarios/');
+		}
+				
+		$foto = $this->Foto->get($this->data['Foto']['id']);
+		if (empty($foto)) {
+			$this->Session->setFlash('La foto no existe o ya fue borrada.');
+			$this->redirect('/usuarios/');
+		}						
+		
+		if (!($usr = $this->getUsuario())) {
+			$this->Session->setFlash('Intente nuevamente.');
+			$this->redirect('/usuarios/');
+		}
+
+		$this->Email->to = $email;
+		$this->Email->from = $usr['Usuario']['nombre_completo'].' <'.$usr['Usuario']['email'].'>';
+		$this->Email->subject = 'Concurso SuperMamá';
+		
+		$this->Email->template = 'email';
+		$this->Email->sendAs = 'html';						
+		
+		$this->set('foto',$foto);
+
+		if($this->Email->send()) {        						
+			$resultado = 1;
+			$this->Session->setFlash('El email se ha enviado correctamente.');	
+		}else{
+			$this->Session->setFlash('El email no ha podido enviarse.');	
+		}
+
+		$this->redirect('/usuarios/');		
+	}
+
+	
+}

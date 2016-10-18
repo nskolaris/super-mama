@@ -1,0 +1,10 @@
+#enviando {
+	height: 149px;
+	text-align: center;
+	clear: left;
+	padding-top: 115px;
+	padding-left: 0px;
+}
+#cuerpopreguntas.enviando {
+	background-image: url(../img/bg_enviando.jpg);
+}

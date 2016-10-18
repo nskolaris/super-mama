@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list>
+	<type name="Pelo">
+		<image url="assets/juan01.swf"/>
+		<image url="assets/juan02.swf"/>
+		<image url="assets/Marco01CS4.swf"/>
+		<image url="assets/pelo01.swf"/>
+		<image url="assets/pelo02.swf"/>
+		<image url="assets/pelo03.png"/>
+		<image url="assets/pelo04.png"/>
+		<image url="assets/pelo05.png"/>
+		<image url="assets/pelo06.png"/>
+		<image url="assets/pelo07.png"/>
+		<image url="assets/pelo08.png"/>
+	</type>
+	<type name="Accesorios">
+		<image url="assets/accesorios01.png"/>
+		<image url="assets/accesorios02.png"/>
+		<image url="assets/accesorios03.png"/>
+		<image url="assets/accesorios04.png"/>
+		<image url="assets/accesorios05.png"/>
+		<image url="assets/accesorios06.png"/>
+		<image url="assets/accesorios07.png"/>
+		<image url="assets/accesorios08.png"/>
+	</type>
+
+	<type name="Globas">
+	
+	</type>
+	
+	<type name="Marcos">
+		<image url="assets/Marcos/marco04.swf"/>
+		<image url="assets/Marcos/marco01.swf"/>
+		<image url="assets/Marcos/marco03.swf"/>
+		<image url="assets/Marcos/marco02.swf"/>
+	</type>
+	
+	<type name="Extras">
+	
+	</type>
+</list>

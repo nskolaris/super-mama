@@ -1,0 +1,121 @@
+#header {
+	background-image: url(../img/backhead4.jpg);
+}
+
+#portada {
+	background-image: url(../img/portada4.jpg);
+	height: 342px;
+	width: 740px;
+	background-position: center;
+	background-repeat: no-repeat;
+	padding-top: 12px;
+	padding-left: 18px;
+}
+#barra {
+	background-image: url(../img/barramarcadores4.jpg);
+}
+
+#titulo {
+	color: #FFF;
+	font-weight: bold;
+	font-family: Arial, Helvetica, sans-serif;
+	font-style: normal;
+	font-size: 20px;
+}
+
+#pista {
+	height: 124px;
+	width: 695px;
+	margin-right: auto;
+	margin-left: auto;
+	background-image: url(../img/fondopista.gif);
+	padding-top: 23px;
+	padding-left: 24px;
+	text-align: center;
+	color: #333;
+}
+#pista div {
+	float: left;
+}
+
+#pista h1 {
+	font-size: 18px;
+}
+#pista h2    {
+	font-size: 30px;
+}
+#pista p {
+	width: 155px;
+}
+
+#medalladepuntos {
+	height: 105px;
+	width: 105px;
+	float: left;
+}
+#puntosporamigos {
+	float: left;
+	margin-left: 130px;
+	margin-top: 10px;
+}
+#puntajetotal {
+	margin-top: 10px;
+	margin-left: 113px;
+}
+
+
+.levels {
+	margin-top: 18px;
+	height: 45px;
+	width: 657px;
+	background-repeat: no-repeat;
+	padding-top: 33px;
+	padding-left: 46px;
+}
+
+	.levels .puntos  {
+		height: 32px;
+		width: 184px;
+		float: left;
+		margin-right: 43px;
+		text-align: center;
+		font-size: 24px;
+		font-weight: bold;
+		color: #333;
+	}
+	
+		.levels .puntos_total {
+			font-size: 30px;
+			margin-right: 0px;
+		}
+
+#lvl1 {
+	background-image: url(../img/bglvl1.png);
+}
+	#lvl1.not_played {
+		background-image: url(../img/noplay1.png);
+	}
+#lvl2 {
+	background-image: url(../img/bglvl2.png);
+}
+	#lvl2.not_played {
+		background-image: url(../img/noplay2.png);
+	}
+#lvl3 {
+	background-image: url(../img/bglvl3.png);
+}
+	#lvl3.not_played {
+		background-image: url(../img/noplay3.png);
+	}
+
+.pnoplay {
+	color: #FFF;
+	text-align: center;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 20px;
+}
+.pnoplay a {
+	color: #FFF;
+}
+

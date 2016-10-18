@@ -1,0 +1,316 @@
+<?php
+class UsuariosController extends AppController {
+
+	var $name = 'Usuarios';
+	var $uses = array('Usuario'); 
+	
+	function proximamente() {
+		$this->layout = null;
+	}
+	
+	function haztefan() {
+		$this->layout = null;
+	}
+	
+	function upload(){
+		
+	}
+	
+	function deprecate_datos() {
+	
+		$fb_user = $this->fbGetUserProfile();
+
+		if (!empty($this->params['form'])) {
+			$error = '';
+
+			if ($usr = $this->Usuario->login($fb_user, $error)) {
+				// grabo los datos
+				if (!empty($usr['Usuario']['id'])) {
+					$this->Usuario->create();
+					$this->Usuario->id = $usr['Usuario']['id'];
+					$this->Usuario->save($this->params['form'], true, array('nombre', 'apellido', 'dni', 'sexo', 'telefono'));
+					
+					$facebook = $this->fbConnect();
+					try {
+						$facebook->api('/me/feed', 'post', array(
+							//'message' => "test",
+							'name' => "Trivia Compumundo",
+							//'caption' => 'this is caption',
+							'description' => 'Estoy participando de la Trivia Compumundo. Ingresa aqui y ayudame a sumar puntos para ganar premios increibles. Por cada amigo que se haga fan podes obtener 250 puntos.',
+							'picture' => 'http://k-dreams.com/fb_apps/compumundo_olimpiadas/img/img_publish_feed.gif',
+//							'link' => 'http://www.facebook.com/CompumundoArg/app_255006517878823',
+							'link' => 'http://www.facebook.com/CompumundoArg/app_208195102528120',
+						));
+					} catch (Exception $e) {
+						//debug($e);
+					}
+					$this->redirect('/usuarios/index');
+				}
+			} else {
+				$this->setFlash($error);
+				$this->redirect('/usuarios/error');
+			}
+		}
+		$this->set('fb_user', $fb_user);
+		
+	}
+
+	function deprecate_dashboard() {
+	
+		$this->checkLogin();
+		$usr = $this->getUsuario();
+//		debug($usr);
+
+		$CuestionariosVigentes = $this->Cuestionario->getVigentes();
+		$Cuestionarios = $this->Cuestionario->getAll();
+		$respondidos = $this->Punto->getCuestionariosRespondidos($usr['id']);
+
+		$pendientes = array_diff(array_keys($CuestionariosVigentes), array_keys($respondidos));
+		
+		if (count($pendientes) == 1) {
+			// lo redirigimos directamente a las preguntas del cuestionario
+			$this->redirect(array('controller' => 'cuestionarios', 'action'=>'view', array_shift($pendientes)));
+		}
+		
+		// los puntos los tenemos en el Usuario
+		$Puntos = $this->Punto->getSumByCuestionario($usr['id']);
+		$this->set(compact('CuestionariosVigentes', 'Cuestionarios', 'Puntos', 'usr'));
+	
+	}
+	
+	
+	function deprecate_points() {
+	
+		$this->checkLogin();
+		$usr = $this->getUsuario();
+//		debug($usr);
+
+		$CuestionariosVigentes = $this->Cuestionario->getVigentes();
+		$Cuestionarios = $this->Cuestionario->getAll();
+		$respondidos = $this->Punto->getCuestionariosRespondidos($usr['id']);
+
+		$pendientes = array_diff(array_keys($CuestionariosVigentes), array_keys($respondidos));
+		
+		// los puntos los tenemos en el Usuario
+		$Puntos = $this->Punto->getSumByCuestionario($usr['id']);
+		
+		$this->set(compact('CuestionariosVigentes', 'Cuestionarios', 'Puntos', 'usr'));
+	
+	}
+
+	function index() {
+		configure::write('debug',2);
+		
+		if (isset($this->params['url']['error']) && ($this->params['url']['error'] == 'access_denied')) {
+			$this->Session->setFlash('Debe aceptar los permisos para poder acceder a la aplicación.');
+			$this->redirect('/usuarios/error');
+		}
+		
+		$this->checkLogin();
+		$usr = $this->getUsuario();
+		
+		if (empty($usr['nrodocumento'])) {
+			$this->redirect('/usuarios/add');
+		}
+		
+		// TODO si tiene foto lo redirige ahi
+		// si no a upload
+
+		$Fotos = $this->Foto->getByUsuario($usr['id']);
+		
+		if (empty($Fotos)) {
+			$this->redirect('/fotos/upload');
+		}
+		
+		$this->upload_tag_photo_test();
+
+		
+		$this->set('Fotos', $Fotos);
+		$this->set('usr', $usr);
+	}
+	
+	function upload_tag_photo_test()
+	{
+		$facebook = $this->fbConnect();
+		//At the time of writing it is necessary to enable upload support in the Facebook SDK, you do this with the line:
+		$facebook->setFileUploadSupport(true);
+
+		//Create an album
+		$album_details = array(
+        'message'=> 'Album test',
+        'name'=> 'Album test'
+		);
+		$create_album = $facebook->api('/me/albums', 'post', $album_details);
+ 
+		//Get album ID of the album you've just created
+		$album_uid = $create_album['id'];
+ 
+		//Upload a photo to album of ID...
+		$photo_details = array(
+    'message'=> 'Photo test'
+		);
+		$file = '../webroot/img/banner-2.jpg'; //Example image file
+
+		$photo_details['image'] = '@' . realpath($file);
+  
+		$upload_photo = $facebook->api('/'.$album_uid.'/photos', 'post', $photo_details);		
+		
+		$tag_photo = $facebook->api('/'.$upload_photo['id'].'/tags/1344442116');
+		
+		var_dump($tag_photo);
+	}
+	
+	function error() {
+	}
+	
+
+	function logout() {
+		$this->_logoutSession();
+		$this->redirect(array('action'=>'index'));
+	}
+
+	
+	function refresh() {
+	
+		$this->checkLogin();
+		$usr = $this->getUsuario();
+		$P = $this->Punto->getSumByUsuario($usr['id']);
+		debug($P);
+		$this->Usuario->savePuntos($usr['id'], $P);
+	}
+	
+	function add(){		
+		$fb_user = $this->fbGetUserProfile();
+
+		if (!empty($this->data)) {
+			$error = '';
+
+			$this->Usuario->set($this->data);
+			if ($this->Usuario->validates()){
+				if ($usr = $this->Usuario->login($fb_user, $error)) {
+					// grabo los datos
+					if (!empty($usr['Usuario']['id'])) {
+						$this->Usuario->create();
+						$this->Usuario->id = $usr['Usuario']['id'];
+						if($this->Usuario->save($this->data)){
+							$facebook = $this->fbConnect();
+							try {
+								$this->FacebookM->participando($facebook);
+							} catch (Exception $e){
+								//debug($e);
+							}
+							$this->Session->setFlash('Se ha inscripto correctamente',true);
+							$this->redirect('/fotos/upload');
+							
+						}else{
+							$this->set('errores',$this->Usuario->invalidFields());
+							$this->Session->setFlash('No se ha podido inscribir correctamente',true);
+						}			
+						
+					}
+				} else {
+					$this->Session->setFlash($error);
+					$this->redirect('/usuarios/error');
+				}
+			} else {
+				$this->set('errores',$this->Usuario->invalidFields());
+				$this->Session->setFlash('No se ha podido inscribir correctamente',true);
+			}
+			
+		}
+		$this->set('fb_user', $fb_user);
+		if (empty($this->data['Usuario']['nombre_completo']) && isset($fb_user['name'])) {
+			$this->data['Usuario']['nombre_completo'] = $fb_user['name'];
+		}
+		if (empty($this->data['Usuario']['email']) && isset($fb_user['email'])) {
+			$this->data['Usuario']['email'] = $fb_user['email'];
+		}
+	}
+	
+
+	// puede recibir un fbuser por named param
+	// y se lo envia solamente a ese usuario	
+	function recordar_concurso($offset=0, $limit=2) {
+	
+		configure::write('debug',2);
+	
+		$fbuser = isset($this->params['named']['fbuser']) ? $this->params['named']['fbuser'] : 0;
+		
+		$this->Usuario->bindModel(array(
+			'hasMany' => array(
+				'Foto' => array(
+					'conditions' => array('Foto.deleted' => null),
+					'order' => 'Foto.orden',
+					'limit' => 1,
+				),
+		)), false);
+		
+		$condiciones = array(
+//			'Usuario.deleted' => null,
+			'Usuario.nrodocumento >' => 0,
+			'Usuario.id >' => $offset,
+		);
+		
+		if ($fbuser > 0) {
+			$offset = 0;
+			$limit = 1;
+			$condiciones['Usuario.fb_id'] = $fbuser;
+		}
+			
+		$this->paginate['contain'] = array(
+			'Foto' => array(
+				'limit' => 1,
+				'order' => 'Foto.orden',
+//				'conditions' => array('Foto.deleted' => null),
+			),
+		);
+		$this->paginate['conditions'] = $condiciones;
+		$this->paginate['order'] = 'Usuario.id';
+		$this->paginate['limit'] = $limit;
+			
+		$Usuarios = $this->paginate();
+		
+		$facebook = $this->fbConnect();
+		
+		//debug($facebook);
+		
+		
+		foreach ($Usuarios as &$Usuario) {
+		
+			if (empty($Usuario['Foto'])) {
+				echo "el usuario {$Usuario['Usuario']['id']} no tiene foto. no le mandamos nada.<br />\n";
+				continue;
+			}
+		
+			debug($Usuario);
+			echo "manda mensaje al id {$Usuario['Usuario']['id']} <br />\n";
+			
+			$params = array(
+				'name' => "Concurso SuperMamá - ¡Votá las fotos!",
+				'picture' => HOST . URL_FOTOS . '/' . $Usuario['Foto'][0]['filename'],
+				'link' => getShareUrlPhoto($Usuario['Foto'][0]),
+			);
+			$params['description'] = 'Hacé click acá y entrá a ver las fotos. Invitá a tus amigos a votar. Participás por 3 reproductores mp3 y 10 cuadros.';
+			if (APP_DEBUGMODE) {
+				$params['url'] = 'http://sphotos-f.ak.fbcdn.net/hphotos-ak-prn1/77154_138016976249930_3265789_n.jpg';
+			}
+			
+//			debug($params);
+
+			try {
+
+			$facebook->api('/'.$Usuario['Usuario']['fb_id'].'/feed', 'post', $params);
+			
+			} catch(Exception $e) {
+				//echo "exception<br />";
+				debug($e);
+			}
+			
+			
+		}
+		$this->autoRender = false;
+		echo "fin";
+		
+	}
+	
+}

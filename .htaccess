@@ -1,0 +1,24 @@
+<IfModule mod_rewrite.c>
+   RewriteEngine on
+
+   RewriteRule    ^common/img/fotos/(.*)_(\d*)_(\d*).(.*)$ common/img/fotos/skuto.php?url=$1.$4&width=$2&height=$3  [L]
+
+   RewriteRule	  ^common(.*)$ common$1 [L]
+   RewriteRule	  ^flash(.*)$ flash$1 [L]
+   
+	RewriteCond %{QUERY_STRING} state
+	RewriteRule (.*) 	http://apps.facebook.com/211645485590601 [L]
+
+#   RewriteRule    ^ver_supermama_(\d*)$ app/webroot/fotos/view_con_votacion/$1  [L]
+#   RewriteRule    ^mi-supermama-(\d*)$ app/webroot/fotos/view_con_votacion/$1  [L]
+
+	# fin del concurso
+   RewriteRule    ^ver_supermama_(\d*)$ app/webroot/pages/fin  [L]
+   RewriteRule    ^mi-supermama-(\d*)$ app/webroot/pages/fin  [L]
+   RewriteRule    ^usuarios(.*)$ app/webroot/pages/fin  [L]
+   
+   
+   RewriteRule    ^$ app/webroot/    [L]
+   RewriteRule    (.*) app/webroot/$1 [L]
+   
+</IfModule>

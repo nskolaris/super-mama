@@ -1,0 +1,54 @@
+.dialogFotosView.ui-dialog{
+	background:none!important;
+	border:none!important;
+	font-family:"Lint McCree Intl BB"!important;	
+}
+
+.dialogFotosView .ui-corner-all{
+	border-radius:0px!important;
+	-moz-border-radius:0px!important;
+	-webkit-border-radius:0px!important;
+	
+}
+
+.dialogFotosView .ui-dialog-titlebar{
+	background:none!important;
+	border:none!important;
+	color:#c6c6c6!important;
+	font-size:21px!important;
+	font-weight:normal!important;
+	position:relative!important;
+}
+
+.dialogFotosView .ui-dialog-title{
+}
+
+.dialogFotosView .ui-dialog-titlebar-close.ui-state-hover{
+	background:none!important;
+	border:none!important;
+}
+
+.dialogFotosView .ui-dialog-titlebar-close .ui-icon-closethick{
+	display:none!important;
+}
+
+.dialogFotosView .ui-dialog-content{
+	padding:0px 40px 20px 40px!important;
+	color:#c6c6c6!important;
+	font-weight:normal!important;
+}
+
+.dialogFotosView .ui-dialog-content p{
+	font-size:12px!important;
+	line-height:1.5!important;
+	margin-bottom:20px!important;
+}
+
+.dialogFotosView .ui-dialog-content h3 {
+	font-size: 16px!important;
+}
+
+.dialogFotosView .ui-widget-overlay {
+	background-color: #000000;
+	opacity: 0.70;
+}

@@ -1,0 +1,49 @@
+#header {
+	background-image: url(../img/backhead3.jpg);
+}
+
+#portada {
+	background-image: url(../img/portada3.jpg);
+	height: 303px;
+	width: 683px;
+	background-position: center;
+	background-repeat: no-repeat;
+	padding-top: 51px;
+	padding-left: 75px;
+}
+
+#barra {
+	background-image: url(../img/barramarcadores3.jpg);
+}
+
+#textos {
+	color: #FFF;
+	margin-left: 38px;
+	font-family: Verdana, Geneva, sans-serif;
+	height: 195px;
+	width: 284px;
+	float: left;
+}
+#boton {
+	float: left;
+	margin-left: 38px;
+	margin-top: 4px;
+}
+
+#textos p {
+	font-style: italic;
+	font-size: 16px;
+}
+#textos h1 {
+	font-size: 36px;
+	font-style: italic;
+}
+#textos h2 {
+	font-size: 45px;
+}
+#medalla {
+	background-image: url(../img/medalla1.png);
+	height: 236px;
+	width: 240px;
+	float: left;
+}

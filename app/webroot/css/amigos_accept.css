@@ -1,0 +1,66 @@
+#header {
+	background-image: url(../img/backheadsumas.gif);
+}
+
+#portada {
+	background-image: url(../img/portadasumas.gif);
+	height: 240px;
+	padding-top: 114px;
+	padding-left: 57px;
+}
+
+#portada.varios {
+	background-image: url(../img/portadasumas2.gif);
+}
+
+#barra {
+	background-image: url(../img/barrasumas.gif);
+}
+
+#botones {
+	display: none;
+}
+
+#contenedoramigos {
+	height: 188px;
+	width: 642px;
+	border: 1 solid #000;
+	overflow: auto;
+}
+
+.bgamigo {
+	background-image: url(../img/fondoamigo.png);
+	height: 56px;
+	width: 183px;
+	float: left;
+	padding-top: 6px;
+	padding-left: 6px;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+.bgamigo .foto {
+	float: left;
+	height: 50px;
+	width: 50px;
+}
+.bgamigo .nombre {
+	float: left;
+	height: 50px;
+	width: 70px;
+	margin-left: 10px;
+	color: #333;
+	font-weight: bold;
+}
+.bgamigo .boton {
+	float: left;
+	height: 32px;
+	width: 33px;
+	margin-top: 10px;
+	margin-left: 10px;
+}
+
+.bgamigo .invitaciones {
+	font-size: 10px;
+	color: #666;
+	font-weight: normal;
+}

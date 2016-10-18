@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list>
+	<type name="Pelo">
+		<image url="../common/customizer/assets/Pelos/pelo01CS4.swf"/>
+		<image url="../common/customizer/assets/Pelos/pelo02CS4.swf"/>
+		<image url="../common/customizer/assets/Pelos/pelo03CS4.swf"/>
+		<image url="../common/customizer/assets/Pelos/pelo04CS4.swf"/>
+		<image url="../common/customizer/assets/Pelos/pelo05CS4.swf"/>
+		<image url="../common/customizer/assets/Pelos/pelo06CS4.swf"/>
+		<image url="../common/customizer/assets/Pelos/pelo07CS4.swf"/>
+		<image url="../common/customizer/assets/Pelos/pelo08CS4.swf"/>
+		<image url="../common/customizer/assets/Pelos/pelo09CS4.swf"/>
+		<image url="../common/customizer/assets/Pelos/pelo10CS4.swf"/>
+		<image url="../common/customizer/assets/Pelos/pelo11CS4.swf"/>
+		<image url="../common/customizer/assets/Pelos/pelo12CS4.swf"/>
+	</type>
+	
+	<type name="Accesorios">
+		<image url="../common/customizer/assets/Accesorios/accesorio01.swf"/>
+		<image url="../common/customizer/assets/Accesorios/accesorio02.swf"/>
+		<image url="../common/customizer/assets/Accesorios/accesorio03.swf"/>
+		<image url="../common/customizer/assets/Accesorios/accesorio04.swf"/>
+		<image url="../common/customizer/assets/Accesorios/accesorio05.swf"/>
+		<image url="../common/customizer/assets/Accesorios/accesorio06.swf"/>
+		<image url="../common/customizer/assets/Accesorios/accesorio07.swf"/>
+		<image url="../common/customizer/assets/Accesorios/accesorio08.swf"/>
+		<image url="../common/customizer/assets/Accesorios/accesorio09.swf"/>
+		<image url="../common/customizer/assets/Accesorios/accesorio10.swf"/>
+		<image url="../common/customizer/assets/Accesorios/accesorio11.swf"/>
+		<image url="../common/customizer/assets/Accesorios/accesorio12.swf"/>
+		<image url="../common/customizer/assets/Accesorios/accesorio13.swf"/>
+		<image url="../common/customizer/assets/Accesorios/accesorio14.swf"/>
+		<image url="../common/customizer/assets/Accesorios/accesorio15.swf"/>
+		<image url="../common/customizer/assets/Accesorios/accesorio16.swf"/>
+		<image url="../common/customizer/assets/Accesorios/accesorio17.swf"/>
+		<image url="../common/customizer/assets/Accesorios/accesorio18.swf"/>
+		<image url="../common/customizer/assets/Accesorios/accesorio19.swf"/>
+		<image url="../common/customizer/assets/Accesorios/accesorio20.swf"/>
+		<image url="../common/customizer/assets/Accesorios/accesorio21.swf"/>
+		<image url="../common/customizer/assets/Accesorios/accesorio22.swf"/>
+		<image url="../common/customizer/assets/Accesorios/accesorio23.swf"/>
+		<image url="../common/customizer/assets/Accesorios/accesorio24.swf"/>
+		<image url="../common/customizer/assets/Accesorios/accesorio25.swf"/>
+		<image url="../common/customizer/assets/Accesorios/accesorio26.swf"/>
+		<image url="../common/customizer/assets/Accesorios/accesorio27.swf"/>
+		<image url="../common/customizer/assets/Accesorios/accesorio28.swf"/>
+		<image url="../common/customizer/assets/Accesorios/accesorio29.swf"/>
+		<image url="../common/customizer/assets/Accesorios/accesorio30.swf"/>
+		<image url="../common/customizer/assets/Accesorios/accesorio31.swf"/>
+		<image url="../common/customizer/assets/Accesorios/accesorio32.swf"/>
+		<image url="../common/customizer/assets/Accesorios/accesorio33.swf"/>
+		<image url="../common/customizer/assets/Accesorios/accesorio34.swf"/>
+		<image url="../common/customizer/assets/Accesorios/accesorio35.swf"/>
+		<image url="../common/customizer/assets/Accesorios/accesorio36.swf"/>
+		<image url="../common/customizer/assets/Accesorios/accesorio37.swf"/>
+		<image url="../common/customizer/assets/Accesorios/accesorio38.swf"/>
+		<image url="../common/customizer/assets/Accesorios/accesorio39.swf"/>
+		<image url="../common/customizer/assets/Accesorios/accesorio40.swf"/>
+		<image url="../common/customizer/assets/Accesorios/accesorio41.swf"/>
+	</type>
+
+	<type name="Globas">
+		<image url="../common/customizer/assets/Globas/globa01.swf"/>
+		<image url="../common/customizer/assets/Globas/globa02.swf"/>
+		<image url="../common/customizer/assets/Globas/globa03.swf"/>
+		<image url="../common/customizer/assets/Globas/globa04.swf"/>
+		<image url="../common/customizer/assets/Globas/globa05.swf"/>
+	</type>
+	
+	<type name="Marcos">
+		<image url="../common/customizer/assets/Marcos/marco01.swf"/>
+		<image url="../common/customizer/assets/Marcos/marco03.swf"/>
+		<image url="../common/customizer/assets/Marcos/marco04.swf"/>
+		<image url="../common/customizer/assets/Marcos/marco05.swf"/>
+		<image url="../common/customizer/assets/Marcos/marco06.swf"/>
+		<image url="../common/customizer/assets/Marcos/marco07.swf"/>
+		<image url="../common/customizer/assets/Marcos/marco08.swf"/>
+		<image url="../common/customizer/assets/Marcos/marco09.swf"/>
+		<image url="../common/customizer/assets/Marcos/marco02.swf"/>
+	</type>
+	
+	<type name="Extras">
+		<image url="../common/customizer/assets/Extras/extra01CS4.swf"/>
+		<image url="../common/customizer/assets/Extras/extra02CS4.swf"/>
+		<image url="../common/customizer/assets/Extras/extra03CS4.swf"/>
+		<image url="../common/customizer/assets/Extras/extra04CS4.swf"/>
+		<image url="../common/customizer/assets/Extras/extra05CS4.swf"/>
+		<image url="../common/customizer/assets/Extras/extra06CS4.swf"/>
+		<image url="../common/customizer/assets/Extras/extra07CS4.swf"/>
+		<image url="../common/customizer/assets/Extras/extra08CS4.swf"/>
+		<image url="../common/customizer/assets/Extras/extra09CS4.swf"/>
+		<image url="../common/customizer/assets/Extras/extra10CS4.swf"/>
+		<image url="../common/customizer/assets/Extras/extra11CS4.swf"/>
+		<image url="../common/customizer/assets/Extras/extra12CS4.swf"/>
+		<image url="../common/customizer/assets/Extras/extra13CS4.swf"/>
+		<image url="../common/customizer/assets/Extras/extra14CS4.swf"/>
+	</type>
+	
+</list>
